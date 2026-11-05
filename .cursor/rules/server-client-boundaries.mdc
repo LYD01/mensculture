@@ -1,0 +1,52 @@
+---
+description: Server / Client boundary conventions — App Router hygiene (all projects)
+alwaysApply: true
+---
+
+# Server / client boundaries
+
+Next.js App Router conventions to prevent RSC payload errors, hydration mismatches, and server-only code in the client bundle. **Product-agnostic** — maintain these regardless of app features.
+
+Full baseline and checklist: [docs/audits/server-client-boundaries.md](../../docs/audits/server-client-boundaries.md).
+
+## Directives
+
+- **Server Components are the default** for `page.tsx` / `layout.tsx`.
+- **`"use server"`** marks Server Actions — not pages (`"use-server"` is invalid).
+- **`"use client"`** only on leaf components that need hooks, events, or browser APIs.
+
+## Page shape
+
+Each route is either server-only JSX, or a **thin server shell** passing serialisable props into small client islands. Do not add `"use client"` to root `page.tsx` / `layout.tsx` to host interactivity — extract a leaf component.
+
+## Server Actions
+
+- Return a serialisable discriminated union; pick one shape per file (`{ success, ... }` or `{ ok, ... }`).
+- **Never `redirect()` or `notFound()` in an error branch** when the action is called from a client component — return an error and navigate on the client.
+- **Never `throw`** for expected validation / auth / not-found errors.
+- Validate user input at the start of every action.
+- Keep actions in **`_actions/`**, not co-located with route files.
+
+## Dates and non-JSON values
+
+- Serialize **`Date` → ISO string** before props cross to client components. Client types use `string`; parse at use site.
+- Pin **locale and time format** in client date display to avoid SSR/browser drift.
+
+## Data fetching & revalidation
+
+- Prefetch in Server Components; pass props down.
+- After mutations, prefer returned data or narrow `revalidatePath` / `revalidateTag` — avoid `revalidatePath(path, "layout")` unless intentional.
+
+## Module import rules
+
+- Client components must not import **`db/`**, server auth, or Node-only modules.
+- Server-only modules should not import client component trees.
+
+## Checklist before merge
+
+- [ ] No `"use client"` on `page.tsx` / `layout.tsx` without justification
+- [ ] No client imports of server-only modules
+- [ ] No error-branch `redirect()` / `throw` in actions invoked from clients
+- [ ] Dates to client are ISO strings
+- [ ] No unnecessary layout-wide revalidation
+- [ ] No redundant client `useEffect` fetch for data the server could pass as props

@@ -1,0 +1,39 @@
+---
+description: Biome, Husky, lint-staged, and Conventional Commits for this repo
+alwaysApply: true
+---
+
+# Repo tooling
+
+## Biome
+
+- Config: [`biome.json`](../../biome.json) — formatter (tabs), linter (`preset: "recommended"`), organize imports on save via assist.
+- **Write:** `pnpm format` (`biome check --write .`)
+- **CI / verify:** `pnpm format:check`
+- Tailwind `@` directives are enabled in the CSS parser. `public/**` SVGs skip `noSvgWithoutTitle` (static assets from the template).
+
+## ESLint
+
+- Next.js flat config: [`eslint.config.mjs`](../../eslint.config.mjs)
+- Run: `pnpm lint`
+
+Use Biome for formatting and import order; ESLint for Next/React rules. Pre-commit does not run ESLint — run `pnpm lint` before pushing if you changed TS/TSX logic.
+
+## Git hooks (Husky)
+
+- **`prepare`** script runs `husky` on install.
+- **Pre-commit** ([`.husky/pre-commit`](../../.husky/pre-commit)): `lint-staged`
+- **Commit-msg** ([`.husky/commit-msg`](../../.husky/commit-msg)): `commitlint` with a printed cheat sheet on failure
+
+## lint-staged
+
+Defined in [`package.json`](../../package.json): staged `*.{js,mjs,cjs,jsx,ts,tsx,json,css}` → `biome check --write --no-errors-on-unmatched`.
+
+## Conventional Commits
+
+- Enforced by [`commitlint.config.mjs`](../../commitlint.config.mjs) (`@commitlint/config-conventional`).
+- Format: `<type>(<optional scope>): <subject>`
+- Subject: lowercase, imperative, no trailing period.
+- Examples: `feat(home): add hero section`, `chore(tooling): bump biome`
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.

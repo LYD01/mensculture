@@ -1,0 +1,54 @@
+---
+description: Code hygiene and Next.js App Router patterns for this repo
+alwaysApply: true
+---
+
+# Code hygiene & patterns
+
+## Next.js App Router
+
+### Components
+- **Default to Server Components.** Add `"use client"` only for browser APIs, event handlers, or hooks.
+- Keep client components small at the leaves; pass data from the server as props.
+- Do not import server-only modules (Node APIs, secrets) inside client components.
+
+### Data & routes
+- Prefer loading data in `async` Server Components instead of `useEffect` + fetch.
+- Use `loading.tsx`, `<Suspense>`, and `error.tsx` when routes need streaming or segment-level errors.
+- Route folders: `lowercase-kebab-case`. Groups: `(group-name)`. Pages: `page.tsx`, layouts: `layout.tsx`.
+
+### Next.js built-ins
+- `next/image`, `next/link`, `next/font` for images, internal links, and fonts.
+
+## TypeScript
+
+- `"strict": true` — do not disable.
+- Avoid `any`; use `unknown` and narrow.
+- Avoid `@ts-ignore` / `@ts-expect-error` without a short comment.
+
+## Environment variables
+
+- Never expose secrets with the `NEXT_PUBLIC_` prefix.
+- Do not commit `.env` or `.env.local`. Document new variable **names** in `.env.example` when they exist.
+
+## Shared code
+
+- Reusable non-UI helpers → `lib/` (create when needed). Keep one-off markup in route/component files.
+
+## Naming
+
+| Thing | Convention | Example |
+|---|---|---|
+| Route segment | `lowercase-kebab-case` | `privacy-policy/` |
+| React component file | `PascalCase.tsx` | `HeroSection.tsx` |
+| Utility file | `camelCase.ts` | `formatHours.ts` |
+
+## General hygiene
+
+- No commented-out code or stray `console.log` in merged work.
+- Import order: Node built-ins → third-party → `@/` → relative.
+- One main concern per file when possible.
+
+See **`server-client-boundaries`** (and [docs/audits/server-client-boundaries.md](../../docs/audits/server-client-boundaries.md)) for RSC, actions, and hydration rules.
+
+See **`repo-tooling`** for Biome, Husky, and commit message rules.

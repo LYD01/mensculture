@@ -1,0 +1,27 @@
+---
+description: Mens Culture — what this site is and what is in the repo today
+alwaysApply: true
+---
+
+# Mens Culture — project context
+
+Simple **one-page** marketing site for a men's hairdresser: who they are, what they do, and a link to book on a **third-party platform** (not built on this site). Later work may add editable content and promotions; that is not in the repo yet.
+
+## In the repo today
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| UI | React 19, Tailwind CSS v4 |
+| Tooling | Biome, ESLint (`eslint-config-next`), Husky, commitlint, lint-staged |
+| Package manager | pnpm |
+
+## Layout
+
+- `@/*` maps to the repo root ([`tsconfig.json`](../../tsconfig.json)).
+- App routes live under [`app/`](../../app/) (`page.tsx`, `layout.tsx`, `globals.css`).
+
+## Product guardrails (when building features)
+
+- Primary **Book** action goes to the external booking URL — stay consistent (same tab vs new tab).
+- Keep the page **fast, accessible, and mobile-first**.
