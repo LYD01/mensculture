@@ -18,8 +18,9 @@ Simple **one-page** marketing site for a men's hairdresser: who they are, what t
 
 ## Layout
 
-- `@/*` maps to the repo root ([`tsconfig.json`](../../tsconfig.json)).
-- App routes live under [`app/`](../../app/) (`page.tsx`, `layout.tsx`, `globals.css`).
+- **Path aliases** in [`tsconfig.json`](../../tsconfig.json): `@components` → `app/_components/index.ts`, `@utils` → `app/_utils/index.ts`; `@/*` for other roots.
+- App routes live under [`app/`](../../app/) (`page.tsx`, `layout.tsx`, `globals.css`). Non-route folders under `app/` use a **`_` prefix** (see **`code-hygiene`**).
+- Import shared UI/helpers as `from "@components"` / `from "@utils"`. Server Actions → `app/_actions/` when added.
 
 ## Product guardrails (when building features)
 

@@ -7,7 +7,7 @@ alwaysApply: true
 
 ## Biome
 
-- Config: [`biome.json`](../../biome.json) — formatter (tabs), linter (`preset: "recommended"`), organize imports on save via assist.
+- Config: [`biome.json`](../../biome.json) — formatter (tabs), linter (`preset: "recommended"`), **grouped import order** via assist → organizeImports (see **`code-hygiene`** → Import order).
 - **Write:** `pnpm format` (`biome check --write .`)
 - **CI / verify:** `pnpm format:check`
 - Tailwind `@` directives are enabled in the CSS parser. `public/**` SVGs skip `noSvgWithoutTitle` (static assets from the template).

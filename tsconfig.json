@@ -19,6 +19,10 @@
 			}
 		],
 		"paths": {
+			"@components": ["./app/_components/index.ts"],
+			"@components/*": ["./app/_components/*"],
+			"@utils": ["./app/_utils/index.ts"],
+			"@utils/*": ["./app/_utils/*"],
 			"@/*": ["./*"]
 		}
 	},

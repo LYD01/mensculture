@@ -25,7 +25,7 @@ Each route is either server-only JSX, or a **thin server shell** passing seriali
 - **Never `redirect()` or `notFound()` in an error branch** when the action is called from a client component — return an error and navigate on the client.
 - **Never `throw`** for expected validation / auth / not-found errors.
 - Validate user input at the start of every action.
-- Keep actions in **`_actions/`**, not co-located with route files.
+- Keep actions in **`app/_actions/`**, not co-located with route files.
 
 ## Dates and non-JSON values
 

@@ -15,7 +15,8 @@ alwaysApply: true
 ### Data & routes
 - Prefer loading data in `async` Server Components instead of `useEffect` + fetch.
 - Use `loading.tsx`, `<Suspense>`, and `error.tsx` when routes need streaming or segment-level errors.
-- Route folders: `lowercase-kebab-case`. Groups: `(group-name)`. Pages: `page.tsx`, layouts: `layout.tsx`.
+- Route folders: `lowercase-kebab-case`. Groups: `(group-name)` — parentheses exclude the name from the URL. Pages: `page.tsx`, layouts: `layout.tsx`.
+- **Non-route folders under `app/`** must use a leading **`_`** so Next.js treats them as private (not URL segments): `app/_components/`, `app/_utils/`, `app/_actions/`, etc. Do not create `app/components/` or `app/utils/` — those would become URL segments.
 
 ### Next.js built-ins
 - `next/image`, `next/link`, `next/font` for images, internal links, and fonts.
@@ -26,6 +27,22 @@ alwaysApply: true
 - Avoid `any`; use `unknown` and narrow.
 - Avoid `@ts-ignore` / `@ts-expect-error` without a short comment.
 
+### Path aliases (barrel imports)
+
+**TypeScript path mapping** in [`tsconfig.json`](../../tsconfig.json). Prefer **barrel** entry points:
+
+| Alias | Folder | Import |
+| --- | --- | --- |
+| `@components` | [`app/_components/index.ts`](../../app/_components/index.ts) | `import { HeroSection } from "@components"` |
+| `@utils` | [`app/_utils/index.ts`](../../app/_utils/index.ts) | `import { formatDisplayDate } from "@utils"` |
+
+- Add each new component or util to the folder’s **`index.ts`** (re-export). Implement in named files alongside it (`app/_components/HeroSection.tsx`, `app/_utils/dates.ts`).
+- Optional deep imports when needed: `@components/HeroSection`, `@utils/dates` — still prefer the barrel for public API.
+- **`@/*`** remains for other roots (`@/app/_actions/…`) if useful.
+- **Do not** use these aliases for npm packages (`react`, `next`, `@radix-ui/…`, etc.).
+
+Colocated route files may use `./` (e.g. `./globals.css` in `app/layout.tsx`).
+
 ## Environment variables
 
 - Never expose secrets with the `NEXT_PUBLIC_` prefix.
@@ -33,21 +50,36 @@ alwaysApply: true
 
 ## Shared code
 
-- Reusable non-UI helpers → `lib/` (create when needed). Keep one-off markup in route/component files.
+- UI → `app/_components/` (export via `@components`). Pure helpers → `app/_utils/` (export via `@utils`).
 
 ## Naming
 
 | Thing | Convention | Example |
 |---|---|---|
 | Route segment | `lowercase-kebab-case` | `privacy-policy/` |
+| Non-route folder under `app/` | `_` prefix | `_components/`, `_actions/` |
 | React component file | `PascalCase.tsx` | `HeroSection.tsx` |
 | Utility file | `camelCase.ts` | `formatHours.ts` |
 
 ## General hygiene
 
 - No commented-out code or stray `console.log` in merged work.
-- Import order: Node built-ins → third-party → `@/` → relative.
 - One main concern per file when possible.
+
+### Import order
+
+Enforced by Biome **Organize Imports** on save / pre-commit ([`biome.json`](../../biome.json)). Blank lines separate groups; **sources are sorted A→Z within each group** (lexicographic); named imports inside `{ … }` are sorted the same way.
+
+| Group | Examples |
+| --- | --- |
+| 1. Node / Bun built-ins | `node:fs`, `node:path`, `bun:test` |
+| 2. React & Next.js | `react`, `react-dom`, `next/*` (framework before other npm deps) |
+| 3. Other npm packages | `clsx`, `server-only`, etc. |
+| 4. Project aliases | `@components`, `@utils`, `@/*` (before npm — not scoped packages) |
+| 5. Relative modules | `./foo`, `../bar` |
+| 6. Styles last | `./globals.css`, `*.module.css` (`:STYLE:`) |
+
+Use **Organize Imports** (or `pnpm format`) instead of hand-sorting. `import type` stays in the same group as its module.
 
 See **`server-client-boundaries`** (and [docs/audits/server-client-boundaries.md](../../docs/audits/server-client-boundaries.md)) for RSC, actions, and hydration rules.
 

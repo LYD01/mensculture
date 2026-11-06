@@ -14,11 +14,11 @@ The rules below make that class of bug hard to reintroduce.
 
 ## Baseline snapshot
 
-| Item | Status |
-| --- | --- |
-| Public routes | `app/page.tsx`, `app/layout.tsx` — Server Components |
-| Server Actions | None yet |
-| Client islands | None yet |
+| Item           | Status                                               |
+| -------------- | ---------------------------------------------------- |
+| Public routes  | `app/page.tsx`, `app/layout.tsx` — Server Components |
+| Server Actions | None yet                                             |
+| Client islands | None yet                                             |
 
 Re-run the **checklist** at the bottom when adding actions, auth, a database layer, or interactive client components.
 
@@ -34,7 +34,7 @@ Re-run the **checklist** at the bottom when adding actions, auth, a database lay
 
 Every route should be either:
 
-1. Inline server JSX (no client state), or  
+1. Inline server JSX (no client state), or
 2. A thin server shell (prefetch, auth checks) that passes **fully serialised** props into one or more small client islands.
 
 Do not put `"use client"` on `page.tsx` or `layout.tsx` to “make the page work” — extract the interactive part.
@@ -47,7 +47,7 @@ Do not put `"use client"` on `page.tsx` or `layout.tsx` to “make the page work
 - **Never `redirect()` or `notFound()` in an error branch** when the action is invoked from a client component. Return an error (e.g. `unauthenticated`) and let the client call `router.push(...)`.
 - **Never `throw`** across the action boundary for expected validation, auth, or not-found cases — thrown errors serialize poorly and surface as generic server errors.
 - Validate external input at the start of every action (e.g. with Zod when the project uses it).
-- Keep actions in `_actions/` — not co-located with route files — so boundaries stay easy to audit.
+- Keep actions in `app/_actions/` — not co-located with route files — so boundaries stay easy to audit.
 
 ### Dates and other non-JSON values
 
