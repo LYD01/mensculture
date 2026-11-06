@@ -1,3 +1,9 @@
 allowBuilds:
   sharp: false
   unrs-resolver: false
+
+# Transitive minimatch@10 from eslint-config-next → @typescript-eslint/typescript-estree
+# (GHSA-g3hv-75wg-m249, DoS via glob amplification). Patched in minimatch >=11.0.1.
+# Remove this override once upstream depends on minimatch@11+ (check: pnpm why minimatch, pnpm audit).
+overrides:
+  "@typescript-eslint/typescript-estree>minimatch": ">=11.0.1"
