@@ -25,5 +25,5 @@ Simple **one-page** marketing site for a men's hairdresser: who they are, what t
 ## Product guardrails (when building features)
 
 - Primary **Book** action goes to the external booking URL — stay consistent (same tab vs new tab).
-- Keep the page **fast, accessible, and mobile-first**.
+- Keep the page **fast, accessible, and mobile-first**. Meet **WCAG 2.2 Level AA** (see **`accessibility`**).
 - **Website copy** (headings, body text, buttons, `metadata`, image `alt` text, and strings in `app/_constants/` meant for the public site): do **not** use the em dash (—). Prefer a full stop, comma, colon, or parentheses (e.g. rewrite two clauses as separate sentences or use “:” before a list).

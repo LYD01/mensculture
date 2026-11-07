@@ -1,0 +1,47 @@
+---
+description: WCAG 2.2 Level AA for UI, content, and interactions
+alwaysApply: true
+---
+
+# Accessibility (WCAG 2.2 AA)
+
+Ship changes that meet **[WCAG 2.2 Level AA](https://www.w3.org/TR/WCAG22/)** unless the user explicitly opts out. Prefer fixing the design system (tokens, components) over one-off overrides.
+
+## Contrast (1.4.3, 1.4.11)
+
+- **Normal text** (&lt; 18px or &lt; 14px bold): at least **4.5:1** against its background.
+- **Large text** (≥ 18px regular, or ≥ 14px bold): at least **3:1**.
+- **UI boundaries and control states** (borders, focus rings, icons that convey meaning): at least **3:1** against adjacent colors.
+- Theme tokens live in [`app/globals.css`](../../app/globals.css). Before pairing colors, verify contrast (e.g. ink/cream on gold tones). Use dedicated tokens when a marketing gold is too light for text (e.g. `--color-gold-button` for solid CTAs).
+- Do not rely on opacity alone to meet contrast; check the computed foreground/background pair.
+- Inherited effects (e.g. `text-shadow` on a hero wrapper) can fail audits on child controls: reset on buttons/links where needed (`[text-shadow:none]`).
+
+## Focus (2.4.7, 2.4.11, 2.4.13)
+
+- Every interactive control has a **visible** `:focus-visible` indicator (not `outline: none` without a replacement).
+- Focus indicators meet **3:1** against the background they sit on; use `outline` with sufficient `outline-offset` where possible.
+- Do not trap focus in marketing sections; modals/dialogs (when added) must manage focus and restore it on close.
+
+## Keyboard and pointer (2.1, 2.5)
+
+- All actions available with keyboard alone; use native `<button>`, `<a href>`, and form controls before custom widgets.
+- Hit targets at least **24×24 CSS px** (2.5.8), or spaced so a 24px circle does not overlap the target of another control (2.5.5).
+- Respect **`prefers-reduced-motion`**: avoid essential motion-only cues; match existing patterns in `globals.css`.
+
+## Semantics and content
+
+- One **`<h1>`** per page; logical heading order; landmarks (`header`, `main`, `footer`, `nav`) where appropriate.
+- **Images**: meaningful `alt` on `next/image`; decorative images `alt=""` and not announced.
+- **Links**: discernible name (visible text or `aria-label`); external links note new tab when not obvious (see `BookButton` pattern).
+- **Links in body copy (1.4.1)**: do not distinguish links by **color alone** from surrounding text. Inline links use the shared **`link-inline`** utility in [`app/globals.css`](../../app/globals.css) (persistent underline + gold decoration). Hover may shift color, but underline must be visible by default. Gold link text beside muted body copy rarely meets the 3:1 link-to-surrounding-text ratio.
+- **Secondary copy**: prefer solid **`text-cream-muted`** over `text-cream/50` or `/60` opacity utilities so contrast is stable in audits.
+- **Forms** (admin and future): visible labels, associated inputs, error text tied with `aria-describedby` / `aria-invalid` as needed.
+
+## Media and motion (2.3, 1.4.2)
+
+- No flashing content above safe thresholds. Audio auto-play only with user control.
+
+## Testing
+
+- After visual or token changes, spot-check primary CTAs and text on gold/dark backgrounds.
+- Run Lighthouse accessibility (or axe) on `/` when touching global styles or shared components.
