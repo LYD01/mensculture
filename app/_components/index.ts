@@ -1,1 +1,9 @@
-export { SitePlaceholder } from "./SitePlaceholder";
+export { AboutSection } from "./AboutSection";
+export { BookButton } from "./BookButton";
+export { BookingSection } from "./BookingSection";
+export { HeroSection } from "./HeroSection";
+export { PricingSection } from "./PricingSection";
+export { ServicesSection } from "./ServicesSection";
+export { SiteFooter } from "./SiteFooter";
+export { SiteHeader } from "./SiteHeader";
+export { SocialLinks } from "./SocialLinks";
