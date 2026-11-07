@@ -3,7 +3,10 @@ import { formatAudPrice, formatServiceDuration } from "@utils";
 
 export function PricingSection() {
 	return (
-		<section id="pricing" className="scroll-mt-20 bg-cream text-ink">
+		<section
+			id="pricing"
+			className="scroll-mt-(--header-offset) bg-cream text-ink"
+		>
 			<div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
 				<h2 className="mb-8 font-display text-4xl leading-tight text-gold-deep sm:text-5xl">
 					Pricing

@@ -19,7 +19,10 @@ const pillars = [
 
 export function AboutSection() {
 	return (
-		<section id="about" className="scroll-mt-20 bg-cream text-ink">
+		<section
+			id="about"
+			className="scroll-mt-(--header-offset) bg-cream text-ink"
+		>
 			<div className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
 				<div className="grid gap-14 lg:grid-cols-[minmax(0,17.5rem)_1fr] lg:items-center lg:gap-16">
 					<div className="mx-auto w-full max-w-[17.5rem] border border-ink/10 bg-ink/5 lg:mx-0">

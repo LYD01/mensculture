@@ -37,7 +37,10 @@ const services = [
 
 export function ServicesSection() {
 	return (
-		<section id="services" className="scroll-mt-20 border-b border-line/60">
+		<section
+			id="services"
+			className="scroll-mt-(--header-offset) border-b border-line/60"
+		>
 			<div className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
 				<div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
 					<div>

@@ -1,8 +1,14 @@
 export { AboutSection } from "./AboutSection";
+export { LockBadge } from "./admin/LockBadge";
+export { LoginForm } from "./admin/LoginForm";
+export { LogoutButton } from "./admin/LogoutButton";
+export { PromotionForm } from "./admin/PromotionForm";
 export { BookButton } from "./BookButton";
 export { BookingSection } from "./BookingSection";
 export { HeroSection } from "./HeroSection";
 export { PricingSection } from "./PricingSection";
+export { PromoBanner } from "./PromoBanner";
+export { PromoBannerStrip } from "./PromoBannerStrip";
 export { ServicesSection } from "./ServicesSection";
 export { SiteFooter } from "./SiteFooter";
 export { SiteHeader } from "./SiteHeader";

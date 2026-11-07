@@ -13,12 +13,36 @@
 	/* Solid mix (~72% cream on ink): passes 4.5:1 on ink and ink-soft (avoids opacity text) */
 	--color-cream-muted: #b5b2ab;
 	--color-stone: #6b6459;
+	/* Admin action intents. Text pairs: cream on success/destructive, ink on warning (all 4.5:1+). */
+	--color-action-success: #276b43;
+	--color-action-success-hover: #2f7d4f;
+	--color-action-warning: #e07a1f;
+	--color-action-warning-hover: #eb8d38;
+	--color-action-destructive: #a32424;
+	--color-action-destructive-hover: #b83030;
+	/* Promo banner: a vivid red that breaks away from the gold/ink palette. Cream on it is ~5.2:1. */
+	--color-promo: #c8102e;
 	--font-sans: var(--font-geist-sans);
 	--font-display: var(--font-display-serif);
 }
 
 html {
 	scroll-behavior: smooth;
+}
+
+/* Sticky header height used as the anchor scroll offset. The promo banner (h-12 = 3rem) adds to it. */
+:root {
+	--header-offset: 5rem;
+}
+
+:root:has([data-promo-banner]) {
+	--header-offset: 8rem;
+}
+
+/* The native date picker icon is dark by default, so it vanishes on dark inputs. Lighten it to silver. */
+input[type="date"]::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	filter: invert(1) brightness(0.8);
 }
 
 @media (prefers-reduced-motion: reduce) {

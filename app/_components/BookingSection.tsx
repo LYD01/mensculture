@@ -22,7 +22,7 @@ const steps = [
 
 export function BookingSection() {
 	return (
-		<section id="locations" className="scroll-mt-20 bg-ink-soft">
+		<section id="locations" className="scroll-mt-(--header-offset) bg-ink-soft">
 			<div className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
 				<div className="text-center">
 					<p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">
