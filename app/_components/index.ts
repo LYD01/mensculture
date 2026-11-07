@@ -8,6 +8,7 @@ export { BookingSection } from "./BookingSection";
 export { CallNowButton } from "./CallNowButton";
 export { HeroSection } from "./HeroSection";
 export { HomeStructuredData } from "./HomeStructuredData";
+export { MapIcon } from "./MapIcon";
 export { PricingSection } from "./PricingSection";
 export { PromoBanner } from "./PromoBanner";
 export { PromoBannerStrip } from "./PromoBannerStrip";

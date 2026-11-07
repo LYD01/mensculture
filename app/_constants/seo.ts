@@ -6,7 +6,7 @@ export const SITE_TITLE =
 	"Men's Culture | Professional Men's Haircuts in Sydney CBD";
 
 export const SITE_DESCRIPTION =
-	"Precision men's haircuts, fades, beard trims and hot towel shaves for Sydney CBD professionals. Three locations: Haymarket, Martin Place and Circular Quay.";
+	"Precision men's haircuts, fades, beard trims and hot towel shaves for Sydney CBD professionals. Three locations: Day Street, Martin Place and Circular Quay.";
 
 export const OPEN_GRAPH_IMAGE = {
 	url: HERO_IMAGE.src,

@@ -10,7 +10,7 @@ export function SiteFooter() {
 						Men&apos;s <span className="text-gold-light">Culture</span>
 					</p>
 					<p className="mt-2 text-sm text-cream-muted">
-						Barbers to Sydney&apos;s CBD. Haymarket · Martin Place · Circular
+						Barbers to Sydney&apos;s CBD. Day Street · Martin Place · Circular
 						Quay
 					</p>
 					<SocialLinks />

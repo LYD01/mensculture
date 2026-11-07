@@ -1,23 +1,50 @@
-export type OpeningHoursSlot = {
-	days: readonly string[];
-	opens: string;
-	closes: string;
-};
+export const WEEK_DAYS = [
+	"Monday",
+	"Tuesday",
+	"Wednesday",
+	"Thursday",
+	"Friday",
+	"Saturday",
+	"Sunday",
+] as const;
 
-/** Schema.org day/time slots (24-hour HH:MM). Shared across CBD shops. */
-export const OPENING_HOURS_SLOTS: OpeningHoursSlot[] = [
-	{ days: ["Monday", "Tuesday", "Friday"], opens: "09:30", closes: "18:00" },
-	{ days: ["Wednesday"], opens: "09:00", closes: "17:30" },
-	{ days: ["Thursday"], opens: "09:00", closes: "20:00" },
-	{ days: ["Saturday"], opens: "08:00", closes: "16:00" },
-];
+export type WeekDay = (typeof WEEK_DAYS)[number];
 
-export const OPENING_HOURS_DISPLAY: { day: string; hours: string }[] = [
-	{ day: "Monday", hours: "9:30am–6pm" },
-	{ day: "Tuesday", hours: "9:30am–6pm" },
-	{ day: "Wednesday", hours: "9am–5:30pm" },
-	{ day: "Thursday", hours: "9am–8pm" },
-	{ day: "Friday", hours: "9:30am–6pm" },
-	{ day: "Saturday", hours: "8am–4pm" },
-	{ day: "Sunday", hours: "Closed" },
-];
+/** 24-hour `HH:MM` times, or `null` when the shop is closed that day. */
+export type DayHours = { opens: string; closes: string } | null;
+
+export type WeekHours = Record<WeekDay, DayHours>;
+
+/** Builds a week: one rule for Monday to Friday, one for Saturday, closed Sunday. */
+function buildWeek(
+	weekdays: DayHours,
+	saturday: DayHours,
+	overrides: Partial<WeekHours> = {},
+): WeekHours {
+	return {
+		Monday: weekdays,
+		Tuesday: weekdays,
+		Wednesday: weekdays,
+		Thursday: weekdays,
+		Friday: weekdays,
+		Saturday: saturday,
+		Sunday: null,
+		...overrides,
+	};
+}
+
+export const DAY_STREET_HOURS = buildWeek(
+	{ opens: "10:00", closes: "19:00" },
+	{ opens: "10:00", closes: "16:00" },
+);
+
+export const MARTIN_PLACE_HOURS = buildWeek(
+	{ opens: "08:00", closes: "18:00" },
+	null,
+);
+
+export const CIRCULAR_QUAY_HOURS = buildWeek(
+	{ opens: "10:00", closes: "19:00" },
+	{ opens: "10:00", closes: "16:00" },
+	{ Friday: { opens: "10:00", closes: "18:00" } },
+);

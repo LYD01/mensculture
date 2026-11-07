@@ -1,13 +1,10 @@
 import {
-	BOOKING_URL,
 	LOCATIONS,
 	SITE_DESCRIPTION,
 	SITE_URL,
 	SOCIAL_LINKS,
 } from "@constants";
 import { buildOpeningHoursSpecifications } from "@utils";
-
-const openingHoursSpecification = buildOpeningHoursSpecifications();
 
 export function HomeStructuredData() {
 	const graph = [
@@ -35,13 +32,15 @@ export function HomeStructuredData() {
 				postalCode: location.postcode,
 				addressCountry: "AU",
 			},
-			openingHoursSpecification,
+			openingHoursSpecification: buildOpeningHoursSpecifications(
+				location.hours,
+			),
 			sameAs: [SOCIAL_LINKS.facebook, SOCIAL_LINKS.instagram],
 			potentialAction: {
 				"@type": "ReserveAction",
 				target: {
 					"@type": "EntryPoint",
-					urlTemplate: BOOKING_URL,
+					urlTemplate: location.bookingUrl,
 					actionPlatform: [
 						"http://schema.org/DesktopWebPlatform",
 						"http://schema.org/MobileWebPlatform",

@@ -6,9 +6,13 @@ export {
 	ADMIN_SESSION_COOKIE,
 } from "./admin";
 export {
-	OPENING_HOURS_DISPLAY,
-	OPENING_HOURS_SLOTS,
-	type OpeningHoursSlot,
+	CIRCULAR_QUAY_HOURS,
+	DAY_STREET_HOURS,
+	type DayHours,
+	MARTIN_PLACE_HOURS,
+	WEEK_DAYS,
+	type WeekDay,
+	type WeekHours,
 } from "./hours";
 export {
 	ABOUT_IMAGE,

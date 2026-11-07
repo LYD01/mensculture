@@ -4,6 +4,10 @@ import { BookIcon } from "./BookIcon";
 
 type BookButtonProps = {
 	label?: string;
+	/** Booking link. Defaults to the general link that lets the visitor pick a shop. */
+	href?: string;
+	/** Shop name announced by screen readers, e.g. "Day Street". */
+	shopName?: string;
 	variant?: "solid" | "outline";
 	size?: "md" | "lg";
 	/** On viewports below `sm`, show only the calendar icon (for compact headers). */
@@ -29,18 +33,21 @@ const mobileIconOnlySizes = {
 
 export function BookButton({
 	label = "Book now",
+	href = BOOKING_URL,
+	shopName,
 	variant = "solid",
 	size = "md",
 	mobileIconOnly = false,
 }: BookButtonProps) {
 	const sizeClass = mobileIconOnly ? mobileIconOnlySizes[size] : sizes[size];
-	const newTabNote = "(opens in a new tab)";
+	// In-page anchors (e.g. "#locations") scroll on the same page instead of opening a tab.
+	const isExternal = !href.startsWith("#");
+	const newTabNote = isExternal ? "(opens in a new tab)" : "";
 
 	return (
 		<a
-			href={BOOKING_URL}
-			target="_blank"
-			rel="noopener noreferrer"
+			href={href}
+			{...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
 			className={`inline-flex items-center justify-center gap-2 font-semibold uppercase tracking-[0.18em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 [text-shadow:none] ${variants[variant]} ${sizeClass}`}
 		>
 			{mobileIconOnly ? (
@@ -51,9 +58,11 @@ export function BookButton({
 					{label} {newTabNote}
 				</span>
 			) : null}
+
 			<span className={mobileIconOnly ? "hidden sm:inline" : undefined}>
 				{label}
 			</span>
+			{shopName ? <span className="sr-only">at {shopName}</span> : null}
 			{mobileIconOnly ? (
 				<span className="hidden sm:inline" aria-hidden="true">
 					→
@@ -61,9 +70,11 @@ export function BookButton({
 			) : (
 				<span aria-hidden="true">→</span>
 			)}
-			<span className={mobileIconOnly ? "sr-only max-sm:hidden" : "sr-only"}>
-				{newTabNote}
-			</span>
+			{isExternal ? (
+				<span className={mobileIconOnly ? "sr-only max-sm:hidden" : "sr-only"}>
+					{newTabNote}
+				</span>
+			) : null}
 		</a>
 	);
 }

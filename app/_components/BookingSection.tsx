@@ -1,8 +1,10 @@
 import Image from "next/image";
 
-import { LOCATIONS, OPENING_HOURS_DISPLAY } from "@constants";
-import { buildTelHref } from "@utils";
+import { LOCATIONS } from "@constants";
+import { buildTelHref, formatDisplayHours } from "@utils";
 
+import { BookButton } from "./BookButton";
+import { MapIcon } from "./MapIcon";
 import { PhoneIcon } from "./PhoneIcon";
 
 export function BookingSection() {
@@ -13,9 +15,9 @@ export function BookingSection() {
 					Our CBD locations
 				</h2>
 				<p className="mx-auto mt-6 max-w-2xl text-center leading-relaxed text-cream-muted">
-					Book online for a reserved time at Haymarket, Martin Place or Circular
-					Quay. Call the shop if you are new and want help choosing a service
-					before you book.
+					Book online for a reserved time at Day Street, Martin Place or
+					Circular Quay. Call the shop if you are new and want help choosing a
+					service before you book.
 				</p>
 				<ul className="mt-10 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
 					{LOCATIONS.map((location) => (
@@ -61,7 +63,7 @@ export function BookingSection() {
 										Opening hours
 									</p>
 									<dl className="mt-2 space-y-1 text-sm text-cream-muted">
-										{OPENING_HOURS_DISPLAY.map((row) => (
+										{formatDisplayHours(location.hours).map((row) => (
 											<div key={row.day} className="flex justify-between gap-4">
 												<dt>{row.day}</dt>
 												<dd className="text-cream">{row.hours}</dd>
@@ -73,14 +75,21 @@ export function BookingSection() {
 									href={location.mapsUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="link-inline mt-6 inline-block text-sm font-semibold uppercase tracking-[0.18em]"
+									className="link-inline mt-6 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.18em]"
 								>
+									<MapIcon />
 									View on Google Maps
 									<span className="sr-only">
 										{" "}
 										for {location.name} (opens in a new tab)
 									</span>
 								</a>
+								<div className="mt-6">
+									<BookButton
+										href={location.bookingUrl}
+										shopName={location.name}
+									/>
+								</div>
 							</div>
 						</li>
 					))}
