@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { SITE_LOGO } from "@constants";
 
 import { BookButton } from "./BookButton";
+import { CallNowButton } from "./CallNowButton";
 import { PromoBanner } from "./PromoBanner";
 
 const navLinks = [
@@ -67,7 +68,10 @@ export function SiteHeader({ variant = "full" }: SiteHeaderProps) {
 								))}
 							</ul>
 						</nav>
-						<BookButton />
+						<div className="flex shrink-0 items-center gap-2 sm:gap-3">
+							<CallNowButton />
+							<BookButton />
+						</div>
 					</>
 				)}
 			</div>

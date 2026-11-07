@@ -5,6 +5,7 @@ export { LogoutButton } from "./admin/LogoutButton";
 export { PromotionForm } from "./admin/PromotionForm";
 export { BookButton } from "./BookButton";
 export { BookingSection } from "./BookingSection";
+export { CallNowButton } from "./CallNowButton";
 export { HeroSection } from "./HeroSection";
 export { PricingSection } from "./PricingSection";
 export { PromoBanner } from "./PromoBanner";
