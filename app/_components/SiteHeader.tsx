@@ -70,7 +70,7 @@ export function SiteHeader({ variant = "full" }: SiteHeaderProps) {
 						</nav>
 						<div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
 							<CallNowButton mobileIconOnly />
-							<BookButton mobileIconOnly />
+							<BookButton href="#locations" mobileIconOnly />
 						</div>
 					</>
 				)}
