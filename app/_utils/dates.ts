@@ -7,3 +7,9 @@ export function formatDisplayDate(
 ): string {
 	return date.toLocaleDateString(DISPLAY_LOCALE, options);
 }
+
+/** Today's calendar date as `YYYY-MM-DD` in the given IANA timezone. */
+export function getTodayInTimeZone(timeZone: string): string {
+	// The `en-CA` locale formats dates as YYYY-MM-DD.
+	return new Intl.DateTimeFormat("en-CA", { timeZone }).format(new Date());
+}
