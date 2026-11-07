@@ -50,7 +50,10 @@ export function BookingSection() {
 									href={buildTelHref(location.phone)}
 									className="link-inline group mt-4 inline-flex items-center gap-2.5"
 								>
-									<PhoneIcon className="h-5 w-5 shrink-0 text-phone transition-colors group-hover:text-phone-hover" />
+									<PhoneIcon
+										variant="solid"
+										className="h-6 w-6 shrink-0 text-phone transition-colors group-hover:text-phone-hover"
+									/>
 									{location.phone}
 								</a>
 								<div className="mt-6">

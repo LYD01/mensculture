@@ -34,7 +34,7 @@ export function SiteHeader({ variant = "full" }: SiteHeaderProps) {
 				height={44}
 				className="h-9 w-9 rounded-full sm:h-11 sm:w-11"
 			/>
-			<span className="font-display text-xl tracking-wide text-cream sm:text-2xl">
+			<span className="hidden font-display text-xl tracking-wide text-cream sm:inline sm:text-2xl">
 				Men&apos;s <span className="text-gold-light">Culture</span>
 			</span>
 		</>
@@ -42,7 +42,7 @@ export function SiteHeader({ variant = "full" }: SiteHeaderProps) {
 
 	return (
 		<header className="sticky top-0 z-20 border-b border-line/60 bg-ink/90 backdrop-blur">
-			<div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
+			<div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:gap-6 sm:px-6">
 				{isMinimal ? (
 					<Link href="/" className={logoLinkClass}>
 						{logo}
@@ -68,9 +68,9 @@ export function SiteHeader({ variant = "full" }: SiteHeaderProps) {
 								))}
 							</ul>
 						</nav>
-						<div className="flex shrink-0 items-center gap-2 sm:gap-3">
-							<CallNowButton />
-							<BookButton />
+						<div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+							<CallNowButton mobileIconOnly />
+							<BookButton mobileIconOnly />
 						</div>
 					</>
 				)}

@@ -1,9 +1,13 @@
 import { BOOKING_URL } from "@constants";
 
+import { BookIcon } from "./BookIcon";
+
 type BookButtonProps = {
 	label?: string;
 	variant?: "solid" | "outline";
 	size?: "md" | "lg";
+	/** On viewports below `sm`, show only the calendar icon (for compact headers). */
+	mobileIconOnly?: boolean;
 };
 
 const variants = {
@@ -18,21 +22,48 @@ const sizes = {
 	lg: "px-8 py-4 text-sm",
 };
 
+const mobileIconOnlySizes = {
+	md: "p-2.5 sm:px-5 sm:py-2.5 sm:text-xs",
+	lg: "p-3 sm:px-8 sm:py-4 sm:text-sm",
+};
+
 export function BookButton({
 	label = "Book now",
 	variant = "solid",
 	size = "md",
+	mobileIconOnly = false,
 }: BookButtonProps) {
+	const sizeClass = mobileIconOnly ? mobileIconOnlySizes[size] : sizes[size];
+	const newTabNote = "(opens in a new tab)";
+
 	return (
 		<a
 			href={BOOKING_URL}
 			target="_blank"
 			rel="noopener noreferrer"
-			className={`inline-flex items-center justify-center gap-2 font-semibold uppercase tracking-[0.18em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 [text-shadow:none] ${variants[variant]} ${sizes[size]}`}
+			className={`inline-flex items-center justify-center gap-2 font-semibold uppercase tracking-[0.18em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 [text-shadow:none] ${variants[variant]} ${sizeClass}`}
 		>
-			{label}
-			<span aria-hidden="true">→</span>
-			<span className="sr-only">(opens in a new tab)</span>
+			{mobileIconOnly ? (
+				<BookIcon className="h-5 w-5 shrink-0 sm:hidden" />
+			) : null}
+			{mobileIconOnly ? (
+				<span className="sr-only sm:hidden">
+					{label} {newTabNote}
+				</span>
+			) : null}
+			<span className={mobileIconOnly ? "hidden sm:inline" : undefined}>
+				{label}
+			</span>
+			{mobileIconOnly ? (
+				<span className="hidden sm:inline" aria-hidden="true">
+					→
+				</span>
+			) : (
+				<span aria-hidden="true">→</span>
+			)}
+			<span className={mobileIconOnly ? "sr-only max-sm:hidden" : "sr-only"}>
+				{newTabNote}
+			</span>
 		</a>
 	);
 }
