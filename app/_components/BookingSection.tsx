@@ -63,6 +63,7 @@ export function BookingSection() {
 										src={location.image}
 										alt={location.imageAlt}
 										fill
+										loading="lazy"
 										sizes="(min-width: 768px) 33vw, 100vw"
 										className="object-cover"
 									/>

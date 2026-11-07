@@ -29,6 +29,7 @@ export function AboutSection() {
 							width={500}
 							height={500}
 							sizes="(min-width: 1024px) 280px, min(100vw - 3rem, 280px)"
+							loading="lazy"
 							className="h-auto w-full object-cover"
 						/>
 					</div>

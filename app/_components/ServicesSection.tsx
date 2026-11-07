@@ -71,6 +71,7 @@ export function ServicesSection() {
 								src={image.src}
 								alt={image.alt}
 								fill
+								loading="lazy"
 								sizes="(min-width: 640px) 33vw, 100vw"
 								className="object-cover brightness-95 transition-[filter] duration-300 hover:brightness-105"
 							/>

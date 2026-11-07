@@ -22,7 +22,6 @@ export function SiteHeader() {
 						width={44}
 						height={44}
 						className="h-9 w-9 rounded-full sm:h-11 sm:w-11"
-						priority
 					/>
 					<span className="font-display text-xl tracking-wide text-cream sm:text-2xl">
 						Men&apos;s <span className="text-gold-light">Culture</span>
