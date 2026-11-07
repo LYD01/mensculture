@@ -48,13 +48,10 @@ export function ServicesSection() {
 							Cuts and grooming, done properly.
 						</h2>
 					</div>
-					<p className="max-w-sm leading-relaxed text-cream/60">
+					<p className="max-w-sm leading-relaxed text-cream-muted">
 						Not sure what to ask for? Your barber will recommend a style that
 						suits you. See{" "}
-						<a
-							href="#pricing"
-							className="text-gold-light underline-offset-4 hover:underline"
-						>
+						<a href="#pricing" className="link-inline">
 							pricing
 						</a>{" "}
 						below or book for the full Timely menu.
@@ -92,7 +89,7 @@ export function ServicesSection() {
 							<h3 className="font-display text-2xl text-cream">
 								{service.name}
 							</h3>
-							<p className="mt-3 leading-relaxed text-cream/60">
+							<p className="mt-3 leading-relaxed text-cream-muted">
 								{service.description}
 							</p>
 						</li>

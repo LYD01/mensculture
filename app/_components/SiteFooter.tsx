@@ -9,7 +9,7 @@ export function SiteFooter() {
 					<p className="font-display text-2xl text-cream">
 						Men&apos;s <span className="text-gold-light">Culture</span>
 					</p>
-					<p className="mt-2 text-sm text-cream/50">
+					<p className="mt-2 text-sm text-cream-muted">
 						Barbers to Sydney&apos;s CBD. Sydney CBD · Martin Place · Circular
 						Quay
 					</p>

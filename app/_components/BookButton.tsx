@@ -8,9 +8,9 @@ type BookButtonProps = {
 
 const variants = {
 	solid:
-		"bg-gold text-ink hover:bg-gold-light focus-visible:outline-gold-light",
+		"bg-gold-button text-ink shadow-none hover:bg-gold-light hover:text-ink focus-visible:outline-ink",
 	outline:
-		"border border-gold text-gold-light hover:bg-gold hover:text-ink focus-visible:outline-gold-light",
+		"border border-gold text-gold-light shadow-none hover:bg-gold-button hover:text-ink focus-visible:outline-gold-light",
 };
 
 const sizes = {
@@ -28,7 +28,7 @@ export function BookButton({
 			href={BOOKING_URL}
 			target="_blank"
 			rel="noopener noreferrer"
-			className={`inline-flex items-center justify-center gap-2 font-semibold uppercase tracking-[0.18em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 ${variants[variant]} ${sizes[size]}`}
+			className={`inline-flex items-center justify-center gap-2 font-semibold uppercase tracking-[0.18em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 [text-shadow:none] ${variants[variant]} ${sizes[size]}`}
 		>
 			{label}
 			<span aria-hidden="true">→</span>

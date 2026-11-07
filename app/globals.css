@@ -5,9 +5,13 @@
 	--color-ink-soft: #1b1e24;
 	--color-line: #2c3038;
 	--color-gold: #b2832b;
+	/* Solid CTAs: ink on default gold is ~5.4:1; this shade is ~4.8:1+ for semibold 14px labels */
+	--color-gold-button: #a67a28;
 	--color-gold-light: #d4a955;
 	--color-gold-deep: #7d5b1c;
 	--color-cream: #f5f1ea;
+	/* Solid mix (~72% cream on ink): passes 4.5:1 on ink and ink-soft (avoids opacity text) */
+	--color-cream-muted: #b5b2ab;
 	--color-stone: #6b6459;
 	--font-sans: var(--font-geist-sans);
 	--font-display: var(--font-display-serif);
@@ -33,4 +37,28 @@ body {
 	text-shadow:
 		0 1px 3px rgb(0 0 0 / 0.55),
 		0 4px 24px rgb(0 0 0 / 0.45);
+}
+
+/* In-paragraph / secondary links: always underlined (not color-only). */
+@utility link-inline {
+	font-weight: 500;
+	color: var(--color-cream);
+	text-decoration-line: underline;
+	text-decoration-color: var(--color-gold);
+	text-underline-offset: 0.25em;
+	text-shadow: none;
+	transition:
+		color 0.15s,
+		text-decoration-color 0.15s;
+
+	&:hover {
+		color: var(--color-gold-light);
+		text-decoration-color: var(--color-gold-light);
+	}
+
+	&:focus-visible {
+		border-radius: 2px;
+		outline: 2px solid var(--color-gold-light);
+		outline-offset: 2px;
+	}
 }

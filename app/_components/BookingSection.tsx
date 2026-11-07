@@ -42,7 +42,9 @@ export function BookingSection() {
 							<h3 className="mt-6 text-lg font-semibold text-cream">
 								{step.title}
 							</h3>
-							<p className="mt-2 leading-relaxed text-cream/60">{step.body}</p>
+							<p className="mt-2 leading-relaxed text-cream-muted">
+								{step.body}
+							</p>
 						</li>
 					))}
 				</ol>
@@ -69,7 +71,7 @@ export function BookingSection() {
 									/>
 								</div>
 								<div className="p-8">
-									<p className="text-xs uppercase tracking-[0.2em] text-cream/50">
+									<p className="text-xs uppercase tracking-[0.2em] text-cream-muted">
 										{location.area}
 									</p>
 									<p className="mt-2 font-display text-2xl text-cream">
@@ -77,7 +79,7 @@ export function BookingSection() {
 									</p>
 									<a
 										href={buildTelHref(location.phone)}
-										className="mt-4 inline-block text-gold-light underline-offset-4 hover:underline"
+										className="link-inline mt-4 inline-block"
 									>
 										{location.phone}
 									</a>

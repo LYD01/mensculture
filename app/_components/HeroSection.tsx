@@ -46,7 +46,7 @@ export function HeroSection() {
 					<BookButton label="Book your cut" size="lg" />
 					<a
 						href="#services"
-						className="px-2 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-cream/80 transition-colors hover:text-gold-light"
+						className="link-inline px-2 py-4 text-sm font-semibold uppercase tracking-[0.18em]"
 					>
 						View services
 					</a>
@@ -54,7 +54,7 @@ export function HeroSection() {
 				<dl className="mt-16 grid max-w-2xl grid-cols-3 gap-6 border-t border-cream/15 pt-8">
 					{highlights.map((item) => (
 						<div key={item.label} className="flex flex-col-reverse">
-							<dt className="mt-1 text-xs leading-snug text-cream/65 sm:text-sm">
+							<dt className="mt-1 text-xs leading-snug text-cream-muted sm:text-sm">
 								{item.label}
 							</dt>
 							<dd className="font-display text-2xl text-cream sm:text-3xl">
