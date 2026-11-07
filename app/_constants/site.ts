@@ -1,3 +1,13 @@
+const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
+/** Server-only: Vercel system env vars are not inlined into client bundles. */
+export const SITE_URL = productionHost
+	? `https://${productionHost}`
+	: "http://localhost:3000";
+
+/** Server-only. False for preview deployments and local builds. */
+export const IS_PRODUCTION_DEPLOYMENT = process.env.VERCEL_ENV === "production";
+
 /** Logo for header / marketing (`public/mensculture-logo.png`). Favicons: `app/icon.png`. */
 export const SITE_LOGO = "/mensculture-logo.png";
 

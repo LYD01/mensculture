@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, Geist } from "next/font/google";
 
+import { SITE_URL } from "@constants";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,6 +17,8 @@ const displaySerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL(SITE_URL),
+	alternates: { canonical: "/" },
 	title: "Men's Culture | Professional Men's Haircuts in Sydney CBD",
 	description:
 		"Precision men's haircuts, fades, beard trims and hot towel shaves for Sydney CBD professionals. Three locations: Sydney CBD, Martin Place and Circular Quay.",
