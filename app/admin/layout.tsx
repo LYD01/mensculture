@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-	title: "Admin | Men's Culture",
+	title: { absolute: "Admin | Men's Culture" },
+	description: "Sign in to manage the Men's Culture promotion banner.",
 	robots: { index: false, follow: false },
 };
 

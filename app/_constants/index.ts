@@ -6,6 +6,11 @@ export {
 	ADMIN_SESSION_COOKIE,
 } from "./admin";
 export {
+	OPENING_HOURS_DISPLAY,
+	OPENING_HOURS_SLOTS,
+	type OpeningHoursSlot,
+} from "./hours";
+export {
 	ABOUT_IMAGE,
 	HERO_IMAGE,
 	SERVICE_HIGHLIGHT_IMAGES,
@@ -22,6 +27,12 @@ export {
 	PROMOTION_LIMITS,
 	PROMOTION_TIME_ZONE,
 } from "./promotion";
+export {
+	OPEN_GRAPH_IMAGE,
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+	homePageMetadata,
+} from "./seo";
 export {
 	BOOKING_URL,
 	IS_PRODUCTION_DEPLOYMENT,
