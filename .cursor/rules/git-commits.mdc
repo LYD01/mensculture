@@ -1,0 +1,40 @@
+---
+description: Split git work into reviewable conventional commits
+alwaysApply: true
+---
+
+# Git commits
+
+When the user asks to commit (or commit and push), **do not** squash everything into one bulk commit unless they ask for that.
+
+## How to split
+
+Group changes by **reviewable concern**, not by file count:
+
+| Typical commit | What goes in it |
+| --- | --- |
+| Tooling / config | Path aliases, formatter or lint config, CI, hooks |
+| Assets | `public/` media, `app/icon.*`, fonts, static binaries |
+| Feature slice | One user-facing capability (e.g. homepage sections, pricing block) |
+| Docs / rules | `.cursor/rules/`, README, audits |
+| Generated churn | e.g. `AGENTS.md` from `next dev`, only when it changed with related Next work |
+
+Aim for **roughly 2–6 commits** per medium-sized task: enough to review in order, not one commit per file.
+
+## Each commit
+
+- **Conventional Commits** (see **`repo-tooling`**): `type(scope): subject`, lowercase imperative subject, no trailing period.
+- **Buildable / honest**: Later commits may depend on earlier ones; do not commit broken intermediate states between pushes.
+- **Scope** when it helps: `feat(home):`, `chore(tooling):`, `feat(assets):`.
+
+## Workflow
+
+1. Inspect `git status` and diffs; plan the commit sequence before staging.
+2. Stage only files for the current commit (`git add` paths, not blind `git add .` unless appropriate).
+3. Commit with a HEREDOC message; run hooks (no `--no-verify` unless the user asks).
+4. Repeat until the working tree is clean.
+5. Push only when the user explicitly requests it.
+
+## Do not commit
+
+Secrets (`.env`, keys), accidental large binaries, or unrelated local edits the user did not ask to include.
