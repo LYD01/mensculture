@@ -14,7 +14,7 @@ export function HeroSection() {
 	return (
 		<section
 			id="top"
-			className="relative overflow-hidden border-b border-line/60"
+			className="relative min-h-[min(100vh,52rem)] overflow-hidden border-b border-line/60"
 		>
 			<Image
 				src={HERO_IMAGE.src}
@@ -34,9 +34,12 @@ export function HeroSection() {
 					Sydney CBD Barbers
 				</p>
 				<h1 className="max-w-3xl font-display text-5xl leading-[1.05] text-cream sm:text-6xl lg:text-7xl">
+					Men&apos;s haircuts in Sydney CBD
+				</h1>
+				<p className="mt-4 max-w-3xl font-display text-2xl leading-snug text-cream sm:text-3xl">
 					Sharp cuts for the{" "}
 					<em className="text-gold-light not-italic">working week.</em>
-				</h1>
+				</p>
 				<p className="mt-8 max-w-xl text-lg leading-relaxed text-cream/80">
 					Precision men&apos;s haircuts and grooming for city professionals.
 					Book a dedicated barber around your calendar and walk back into the

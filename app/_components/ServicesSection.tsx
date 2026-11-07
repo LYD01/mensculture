@@ -11,7 +11,7 @@ const services = [
 	{
 		name: "Skin fade",
 		description:
-			"Clean, precise fades blended by hand, from subtle and corporate to sharp.",
+			"Clean, precise fades blended by hand. Priced as a detailed men's reshape and shampoo (see pricing).",
 	},
 	{
 		name: "Beard trim & shape",

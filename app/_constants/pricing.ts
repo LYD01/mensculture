@@ -19,6 +19,7 @@ export const PRICING_CATEGORIES: PriceCategory[] = [
 				name: "Detailed men's reshape and shampoo",
 				priceAud: 60,
 				durationMinutes: 30,
+				note: "Includes skin fades and classic cuts.",
 			},
 			{
 				name: "Detailed cut and shampoo",
@@ -63,9 +64,10 @@ export const PRICING_CATEGORIES: PriceCategory[] = [
 		title: "Beard & shave",
 		items: [
 			{
-				name: "Traditional barber shave",
+				name: "Hot towel shave",
 				priceAud: 45,
 				durationMinutes: 20,
+				note: "Traditional straight-razor barber shave.",
 			},
 			{
 				name: "Beard grooming & shaping plus cleanse",

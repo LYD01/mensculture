@@ -16,6 +16,9 @@
 	/* Admin action intents. Text pairs: cream on success/destructive, ink on warning (all 4.5:1+). */
 	--color-action-success: #276b43;
 	--color-action-success-hover: #2f7d4f;
+	/* Phone / call icons on dark surfaces (~3:1+ against ink). */
+	--color-phone: #5cb87a;
+	--color-phone-hover: #72c890;
 	--color-action-warning: #e07a1f;
 	--color-action-warning-hover: #eb8d38;
 	--color-action-destructive: #a32424;

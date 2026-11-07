@@ -45,9 +45,10 @@ export function AboutSection() {
 						</h2>
 						<p className="mt-6 text-lg leading-relaxed text-stone">
 							Men&apos;s Culture is a gentleman&apos;s barbershop with three
-							locations across Sydney&apos;s CBD. We use quality products and
-							tools, listen to how you work and live, and give you a cut that
-							holds its shape from Monday to Friday.
+							locations across Sydney&apos;s CBD: Haymarket, Martin Place and
+							Circular Quay. We use quality products and tools, listen to how
+							you work and live, and give you a cut that holds its shape from
+							Monday to Friday.
 						</p>
 					</div>
 				</div>
