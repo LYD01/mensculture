@@ -1,0 +1,45 @@
+---
+description: Drizzle ORM and Neon Postgres conventions (server-only data layer, schema, queries, caching)
+alwaysApply: true
+---
+
+# Database (Drizzle + Neon)
+
+## Server-only
+
+- Everything under `db/` starts with `import "server-only"`. Never import `db/` from a Client Component.
+- Import `db` only in Server Components, Server Actions, and `db/queries/*`.
+
+## Driver and client
+
+- Default driver: **`drizzle-orm/neon-http`**. Create the client **once at module level** in `db/index.ts` with `casing: "snake_case"`. Never instantiate it inside a request handler or Server Action.
+- Switch to `drizzle-orm/neon-serverless` with a module-level `Pool` only when a feature needs interactive `db.transaction()` (the HTTP driver does not support it).
+- Connection strings: the app runtime uses `DATABASE_URL` (pooled). `drizzle-kit` uses `DATABASE_URL_UNPOOLED` (direct).
+- Neon enforces TLS (`sslmode=require`); the Vercel integration provides this. Preview deployments may use separate Neon branches, so preview data is not production data.
+
+## Schema
+
+- All tables live in `db/schema.ts` and are exported so `drizzle-kit` can discover them.
+- TypeScript keys are `camelCase`; DB columns are `snake_case` via the `casing` option (no manual column aliases).
+- Spread a shared `timestamps` fragment (`createdAt`, `updatedAt`) across tables.
+- Put `.notNull()` on every column that must not be null.
+- Add indexes for columns used in `WHERE` / `ORDER BY`.
+- Infer types from the schema (`$inferSelect`, `$inferInsert`). Never hand-write row types.
+
+## Queries
+
+- Queries live in `db/queries/<domain>.ts`, not inline in pages or actions.
+- Prefer the query builder or `db.query.*` over raw SQL. Use `sql` only for expressions the builder cannot express.
+- Wrap multi-step writes in `db.transaction()` (requires the `Pool` driver).
+- Date and timestamp values crossing to Client Components must be ISO strings.
+
+## Migrations (pre-v1)
+
+- Edit `db/schema.ts`, then run `pnpm db:push`. Do not write migration files by hand.
+- At v1, switch to `drizzle-kit generate` + `drizzle-kit migrate` with committed migrations and update this rule.
+
+## Caching
+
+- Database reads shown on public pages go through `"use cache"` + `cacheTag(...)`, with exactly one `cacheLife` call per code path. A failed read must use a short lifetime so an outage is not cached.
+- Mutations (Server Actions) call `updateTag(...)` so the author sees changes immediately.
+- Do not use `export const dynamic = "force-dynamic"`; it conflicts with `cacheComponents`. Read request data (`cookies()`, `headers()`) inside `<Suspense>`.

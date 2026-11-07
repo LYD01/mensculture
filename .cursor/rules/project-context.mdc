@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Mens Culture — project context
 
-Simple **one-page** marketing site for a men's hairdresser: who they are, what they do, and a link to book on a **third-party platform** (not built on this site). Later work may add editable content and promotions; that is not in the repo yet.
+Simple **one-page** marketing site for a men's hairdresser: who they are, what they do, and a link to book on a **third-party platform** (not built on this site). A password-protected `/admin` area lets the owner manage a single promo banner shown under the sticky header.
 
 ## In the repo today
 
@@ -13,6 +13,7 @@ Simple **one-page** marketing site for a men's hairdresser: who they are, what t
 |---|---|
 | Framework | Next.js 16 (App Router) |
 | UI | React 19, Tailwind CSS v4 |
+| Data | Neon Postgres, Drizzle ORM (`neon-http`), Zod (see **`database`**) |
 | Tooling | Biome, ESLint (`eslint-config-next`), Husky, commitlint, lint-staged |
 | Package manager | pnpm |
 
@@ -20,7 +21,8 @@ Simple **one-page** marketing site for a men's hairdresser: who they are, what t
 
 - **Path aliases** in [`tsconfig.json`](../../tsconfig.json): `@components` → `app/_components/index.ts`, `@utils` → `app/_utils/index.ts`; `@/*` for other roots.
 - App routes live under [`app/`](../../app/) (`page.tsx`, `layout.tsx`, `globals.css`). Non-route folders under `app/` use a **`_` prefix** (see **`code-hygiene`**).
-- Import shared UI/helpers as `from "@components"` / `from "@utils"`. Server Actions → `app/_actions/` when added.
+- Import shared UI/helpers as `from "@components"` / `from "@utils"`. Server Actions → `app/_actions/`.
+- Server-only code lives at the repo root: `db/` (Drizzle client, schema, `queries/`) and `lib/` (`env.ts`, `session.ts`, `rateLimit.ts`, `validations/`). Import via `@/db/...` and `@/lib/...`.
 
 ## Product guardrails (when building features)
 

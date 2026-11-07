@@ -26,6 +26,8 @@ alwaysApply: true
 - `"strict": true` — do not disable.
 - Avoid `any`; use `unknown` and narrow.
 - Avoid `@ts-ignore` / `@ts-expect-error` without a short comment.
+- Prefer `type` over `interface` (use `interface` only for intentional declaration merging).
+- Validate all external input (form data, env vars, payloads) with **Zod** at the boundary. Shared schemas live in `lib/validations/`.
 
 ### Path aliases (barrel imports)
 
@@ -47,6 +49,23 @@ Colocated route files may use `./` (e.g. `./globals.css` in `app/layout.tsx`).
 
 - Never expose secrets with the `NEXT_PUBLIC_` prefix.
 - Do not commit `.env` or `.env.local`. Document new variable **names** in `.env.example` when they exist.
+- Parse `process.env` once, in `lib/env.ts` (Zod), and import the parsed values elsewhere.
+- Generate secrets with `openssl rand -base64 32` (32+ characters).
+
+## Server Actions
+
+- Live in `app/_actions/`, named `camelCase.ts`. One concern per file: no React components exported from action files, and `"use server"` files export only async functions.
+- Validate input with Zod first; return `{ ok: false, error, fieldErrors? }` instead of throwing for expected errors.
+- Never create a Route Handler just to proxy a database write.
+
+## Security and logging
+
+- Render database content only as React text. Never use `dangerouslySetInnerHTML`, and never put database content in `href`, `src`, or `style`.
+- Never log secrets, passwords, IP addresses, or session tokens, including during local debugging.
+
+## Admin action buttons
+
+- Save is `success` (green); turning something off is `warning` (orange); remove or delete is `destructive` (red) and needs a confirm step whose button names the action (for example "Remove banner", not "OK") and whose description states the impact.
 
 ## Shared code
 
