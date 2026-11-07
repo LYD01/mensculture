@@ -21,6 +21,8 @@
 		"paths": {
 			"@components": ["./app/_components/index.ts"],
 			"@components/*": ["./app/_components/*"],
+			"@constants": ["./app/_constants/index.ts"],
+			"@constants/*": ["./app/_constants/*"],
 			"@utils": ["./app/_utils/index.ts"],
 			"@utils/*": ["./app/_utils/*"],
 			"@/*": ["./*"]

@@ -41,7 +41,15 @@
 							":BLANK_LINE:",
 							["react", "react/**", "next", "next/**"],
 							":BLANK_LINE:",
-							["@components", "@components/**", "@utils", "@utils/**", "@/**"],
+							[
+								"@components",
+								"@components/**",
+								"@constants",
+								"@constants/**",
+								"@utils",
+								"@utils/**",
+								"@/**"
+							],
 							":BLANK_LINE:",
 							[
 								":PACKAGE:",
@@ -51,6 +59,8 @@
 								"!next/**",
 								"!@components",
 								"!@components/**",
+								"!@constants",
+								"!@constants/**",
 								"!@utils",
 								"!@utils/**"
 							],
