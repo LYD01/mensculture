@@ -4,6 +4,12 @@
 	--color-ink: #121418;
 	--color-ink-soft: #1b1e24;
 	--color-line: #2c3038;
+	--color-navy: #121418;
+	--color-navy-soft: #1b1e24;
+	/* Logo yellow: navy on it is ~9:1 */
+	--color-sun: #f6c026;
+	--color-sun-hover: #ffd24d;
+	--color-paper: #fdfbf6;
 	--color-gold: #b2832b;
 	/* Solid CTAs: ink on default gold is ~5.4:1; this shade is ~4.8:1+ for semibold 14px labels */
 	--color-gold-button: #a67a28;
@@ -64,6 +70,29 @@ body {
 	text-shadow:
 		0 1px 3px rgb(0 0 0 / 0.55),
 		0 4px 24px rgb(0 0 0 / 0.45);
+}
+
+/* Same as link-inline, for light surfaces (navy text, gold underline). */
+@utility link-inline-light {
+	font-weight: 500;
+	color: var(--color-navy);
+	text-decoration-line: underline;
+	text-decoration-color: var(--color-gold);
+	text-underline-offset: 0.25em;
+	transition:
+		color 0.15s,
+		text-decoration-color 0.15s;
+
+	&:hover {
+		color: var(--color-gold-deep);
+		text-decoration-color: var(--color-gold-deep);
+	}
+
+	&:focus-visible {
+		border-radius: 2px;
+		outline: 2px solid var(--color-navy);
+		outline-offset: 2px;
+	}
 }
 
 /* In-paragraph / secondary links: always underlined (not color-only). */
