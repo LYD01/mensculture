@@ -5,7 +5,7 @@ export function PricingSection() {
 	return (
 		<section
 			id="pricing"
-			className="scroll-mt-(--header-offset) bg-cream text-ink"
+			className="scroll-mt-(--header-offset) bg-cream text-navy"
 		>
 			<div className="mx-auto max-w-6xl px-6 py-16 lg:py-20">
 				<h2 className="mb-8 font-display text-4xl leading-tight text-gold-deep sm:text-5xl">
@@ -15,10 +15,10 @@ export function PricingSection() {
 				<div className="grid gap-10 sm:grid-cols-2 sm:gap-x-12 lg:gap-x-16">
 					{PRICING_CATEGORIES.map((category) => (
 						<div key={category.title}>
-							<h3 className="border-b border-ink/15 pb-2 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gold-deep">
+							<h3 className="border-b border-navy/20 pb-2 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gold-deep">
 								{category.title}
 							</h3>
-							<ul className="divide-y divide-ink/10">
+							<ul className="divide-y divide-navy/10">
 								{category.items.map((item) => (
 									<li
 										key={item.name}
@@ -35,7 +35,7 @@ export function PricingSection() {
 											) : null}
 										</div>
 										<p className="shrink-0 text-right text-sm leading-tight whitespace-nowrap tabular-nums">
-											<span className="font-display text-lg text-ink">
+											<span className="font-display text-lg text-navy">
 												{formatAudPrice(item.priceAud)}
 											</span>
 											<span className="text-stone">

@@ -35,13 +35,13 @@ export function SiteHeader({ variant = "full" }: SiteHeaderProps) {
 				className="h-9 w-9 rounded-full sm:h-11 sm:w-11"
 			/>
 			<span className="hidden font-display text-xl tracking-wide text-cream sm:inline sm:text-2xl">
-				Men&apos;s <span className="text-gold-light">Culture</span>
+				Men&apos;s <span className="text-sun">Culture</span>
 			</span>
 		</>
 	);
 
 	return (
-		<header className="sticky top-0 z-20 border-b border-line/60 bg-ink/90 backdrop-blur">
+		<header className="sticky top-0 z-20 border-b border-sun/40 bg-navy/95 backdrop-blur">
 			<div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:gap-6 sm:px-6">
 				{isMinimal ? (
 					<Link href="/" className={logoLinkClass}>
@@ -55,12 +55,12 @@ export function SiteHeader({ variant = "full" }: SiteHeaderProps) {
 				{isMinimal ? null : (
 					<>
 						<nav aria-label="Main" className="hidden md:block">
-							<ul className="flex gap-8 text-sm text-cream/70">
+							<ul className="flex gap-8 text-sm text-cream">
 								{navLinks.map((link) => (
 									<li key={link.href}>
 										<a
 											href={link.href}
-											className="transition-colors hover:text-gold-light"
+											className="transition-colors hover:text-sun"
 										>
 											{link.label}
 										</a>

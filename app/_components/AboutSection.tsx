@@ -21,11 +21,11 @@ export function AboutSection() {
 	return (
 		<section
 			id="about"
-			className="scroll-mt-(--header-offset) bg-cream text-ink"
+			className="scroll-mt-(--header-offset) bg-paper text-navy"
 		>
 			<div className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
 				<div className="grid gap-14 lg:grid-cols-[minmax(0,17.5rem)_1fr] lg:items-center lg:gap-16">
-					<div className="mx-auto w-full max-w-[17.5rem] border border-ink/10 bg-ink/5 lg:mx-0">
+					<div className="mx-auto w-full max-w-[17.5rem] border border-navy/10 bg-navy/5 lg:mx-0">
 						<Image
 							src={ABOUT_IMAGE.src}
 							alt={ABOUT_IMAGE.alt}
@@ -52,9 +52,9 @@ export function AboutSection() {
 						</p>
 					</div>
 				</div>
-				<ul className="mt-14 grid gap-px overflow-hidden border border-ink/10 bg-ink/10 lg:grid-cols-3">
+				<ul className="mt-14 grid gap-px overflow-hidden border border-navy/10 bg-navy/10 lg:grid-cols-3">
 					{pillars.map((pillar, index) => (
-						<li key={pillar.title} className="flex gap-6 bg-cream p-8">
+						<li key={pillar.title} className="flex gap-6 bg-white p-8">
 							<span className="font-display text-2xl text-gold-deep">
 								{`0${index + 1}`}
 							</span>

@@ -9,20 +9,23 @@ import { PhoneIcon } from "./PhoneIcon";
 
 export function BookingSection() {
 	return (
-		<section id="locations" className="scroll-mt-(--header-offset) bg-ink-soft">
+		<section
+			id="locations"
+			className="scroll-mt-(--header-offset) bg-cream text-navy"
+		>
 			<div className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
-				<h2 className="text-center font-display text-4xl leading-tight text-cream sm:text-5xl">
+				<h2 className="text-center font-display text-4xl leading-tight text-navy sm:text-5xl">
 					Our CBD locations
 				</h2>
-				<p className="mx-auto mt-6 max-w-2xl text-center leading-relaxed text-cream-muted">
+				<p className="mx-auto mt-6 max-w-2xl text-center leading-relaxed text-stone">
 					Book online for a reserved time at Day Street, Martin Place or
 					Circular Quay. Call the shop if you are new and want help choosing a
 					service before you book.
 				</p>
-				<ul className="mt-10 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+				<ul className="mt-10 grid gap-px overflow-hidden border border-navy/10 bg-navy/10 md:grid-cols-3">
 					{LOCATIONS.map((location) => (
-						<li key={location.name} className="bg-ink">
-							<div className="relative aspect-3/2 border-b border-line">
+						<li key={location.name} className="bg-white">
+							<div className="relative aspect-3/2 border-b border-navy/10">
 								<Image
 									src={location.image}
 									alt={location.imageAlt}
@@ -34,14 +37,14 @@ export function BookingSection() {
 								/>
 							</div>
 							<div className="p-8">
-								<p className="text-xs uppercase tracking-[0.2em] text-cream-muted">
+								<p className="text-xs uppercase tracking-[0.2em] text-stone">
 									{location.area}
 								</p>
-								<p className="mt-2 font-display text-2xl text-cream">
+								<p className="mt-2 font-display text-2xl text-navy">
 									{location.name}
 								</p>
-								<address className="mt-4 space-y-1 text-sm not-italic leading-relaxed text-cream-muted">
-									<span className="block text-cream">
+								<address className="mt-4 space-y-1 text-sm not-italic leading-relaxed text-stone">
+									<span className="block text-navy">
 										{location.streetAddress}
 									</span>
 									<span className="block">
@@ -50,23 +53,23 @@ export function BookingSection() {
 								</address>
 								<a
 									href={buildTelHref(location.phone)}
-									className="link-inline group mt-4 inline-flex items-center gap-2.5"
+									className="link-inline-light group mt-4 inline-flex items-center gap-2.5"
 								>
 									<PhoneIcon
 										variant="solid"
-										className="h-6 w-6 shrink-0 text-phone transition-colors group-hover:text-phone-hover"
+										className="h-6 w-6 shrink-0 text-action-success transition-colors group-hover:text-action-success-hover"
 									/>
 									{location.phone}
 								</a>
 								<div className="mt-6">
-									<p className="text-xs font-semibold uppercase tracking-[0.2em] text-cream-muted">
+									<p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone">
 										Opening hours
 									</p>
-									<dl className="mt-2 space-y-1 text-sm text-cream-muted">
+									<dl className="mt-2 space-y-1 text-sm text-stone">
 										{formatDisplayHours(location.hours).map((row) => (
 											<div key={row.day} className="flex justify-between gap-4">
 												<dt>{row.day}</dt>
-												<dd className="text-cream">{row.hours}</dd>
+												<dd className="text-navy">{row.hours}</dd>
 											</div>
 										))}
 									</dl>
@@ -75,7 +78,7 @@ export function BookingSection() {
 									href={location.mapsUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="link-inline mt-6 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.18em]"
+									className="link-inline-light mt-6 inline-flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.18em]"
 								>
 									<MapIcon />
 									View on Google Maps
