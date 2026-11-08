@@ -24,12 +24,8 @@ export function HeroSection() {
 				sizes="100vw"
 				className="object-cover object-center"
 			/>
-			<div
-				aria-hidden="true"
-				className="absolute inset-0 bg-linear-to-r from-ink/40 via-ink/15 to-transparent"
-			/>
 			<div className="relative mx-auto max-w-6xl px-6 pb-20 pt-20 text-shadow-hero sm:pt-28 lg:pb-28 lg:pt-36">
-				<p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">
+				<p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-sun">
 					<span aria-hidden="true" className="h-px w-10 bg-gold" />
 					Sydney CBD Barbers
 				</p>
@@ -38,7 +34,7 @@ export function HeroSection() {
 				</h1>
 				<p className="mt-4 max-w-3xl font-display text-2xl leading-snug text-cream sm:text-3xl">
 					Sharp cuts for the{" "}
-					<em className="text-gold-light not-italic">working week.</em>
+					<em className="text-sun not-italic">working week.</em>
 				</p>
 				<p className="mt-8 max-w-xl text-lg leading-relaxed text-cream/80">
 					Precision men&apos;s haircuts and grooming for city professionals.

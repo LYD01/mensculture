@@ -25,7 +25,7 @@ export function CallNowButton({
 	return (
 		<a
 			href="#locations"
-			className={`inline-flex items-center justify-center gap-2 border border-gold font-semibold uppercase tracking-[0.18em] text-gold-light shadow-none transition-colors hover:bg-gold-button hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-light [text-shadow:none] ${sizeClass}`}
+			className={`inline-flex items-center justify-center gap-2 border border-sun font-semibold uppercase tracking-[0.18em] text-sun shadow-none transition-colors hover:bg-sun hover:text-navy focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sun [text-shadow:none] ${sizeClass}`}
 		>
 			<PhoneIcon variant="solid" className="h-5 w-5 shrink-0" />
 			{mobileIconOnly ? (

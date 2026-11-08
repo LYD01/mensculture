@@ -2,7 +2,7 @@ import { SOCIAL_LINKS } from "@constants";
 
 const iconClass = "h-8 w-8";
 const linkClass =
-	"rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-light";
+	"rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun";
 
 function FacebookIcon() {
 	return (

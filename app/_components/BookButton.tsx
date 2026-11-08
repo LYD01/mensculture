@@ -16,9 +16,9 @@ type BookButtonProps = {
 
 const variants = {
 	solid:
-		"bg-gold-button text-ink shadow-none hover:bg-gold-light hover:text-ink focus-visible:outline-ink",
+		"bg-sun text-navy shadow-none hover:bg-sun-hover hover:text-navy focus-visible:outline-cream",
 	outline:
-		"border border-gold text-gold-light shadow-none hover:bg-gold-button hover:text-ink focus-visible:outline-gold-light",
+		"border border-sun text-sun shadow-none hover:bg-sun hover:text-navy focus-visible:outline-sun",
 };
 
 const sizes = {
