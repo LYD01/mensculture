@@ -31,6 +31,7 @@ export {
 	PROMOTION_LIMITS,
 	PROMOTION_TIME_ZONE,
 } from "./promotion";
+export { REVIEWS, type Review } from "./reviews";
 export {
 	OPEN_GRAPH_IMAGE,
 	SITE_DESCRIPTION,

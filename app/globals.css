@@ -118,3 +118,38 @@ body {
 		outline-offset: 2px;
 	}
 }
+
+/* Reviews: a seamless carousel moved by ReviewsMarquee (transform only). It can
+   be dragged sideways; vertical swipes still scroll the page. With reduced
+   motion it becomes a normal horizontally scrollable row. */
+.reviews-viewport {
+	cursor: grab;
+	touch-action: pan-y;
+	-webkit-user-select: none;
+	user-select: none;
+	mask-image: linear-gradient(
+		to right,
+		transparent,
+		black 4%,
+		black 96%,
+		transparent
+	);
+}
+
+.reviews-viewport[data-dragging="true"] {
+	cursor: grabbing;
+}
+
+.reviews-viewport img {
+	pointer-events: none;
+	-webkit-user-drag: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reviews-viewport {
+		cursor: auto;
+		touch-action: auto;
+		-webkit-user-select: auto;
+		user-select: auto;
+	}
+}

@@ -4,6 +4,7 @@ import {
 	HeroSection,
 	HomeStructuredData,
 	PricingSection,
+	ReviewsSection,
 	ServicesSection,
 	SiteFooter,
 	SiteHeader,
@@ -22,6 +23,7 @@ export default function Home() {
 				<AboutSection />
 				<ServicesSection />
 				<PricingSection />
+				<ReviewsSection />
 				<BookingSection />
 			</main>
 			<SiteFooter />
