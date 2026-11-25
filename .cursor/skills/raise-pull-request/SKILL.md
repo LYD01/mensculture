@@ -34,11 +34,14 @@ The user opens the PR themselves. Your job ends with a link they can click.
 
 ```markdown
 ## What changed
+
 - One bullet per feature.
 
 ## How to test
+
 - Steps the reviewer can follow locally (`pnpm dev`, then where to click).
 
 ## Notes
+
 - Known gaps, follow-ups, or decisions the reviewer should check.
 ```
