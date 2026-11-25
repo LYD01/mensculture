@@ -38,11 +38,14 @@ export {
 	homePageMetadata,
 } from "./seo";
 export {
+	BOOKING_BASE_URL,
 	BOOKING_URL,
 	IS_PRODUCTION_DEPLOYMENT,
 	LOCATIONS,
 	type Location,
+	type LocationSlug,
 	SITE_LOGO,
 	SITE_URL,
 	SOCIAL_LINKS,
 } from "./site";
+export { TIMELY_SERVICES, type TimelyService } from "./timelyServices";

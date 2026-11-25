@@ -1,5 +1,11 @@
 import { PRICING_CATEGORIES } from "@constants";
-import { formatAudPrice, formatServiceDuration } from "@utils";
+import {
+	buildServiceBookingJourney,
+	formatAudPrice,
+	formatServiceDuration,
+} from "@utils";
+
+import { ServiceBookDialog } from "./ServiceBookDialog";
 
 export function PricingSection() {
 	return (
@@ -22,7 +28,7 @@ export function PricingSection() {
 								{category.items.map((item) => (
 									<li
 										key={item.name}
-										className="flex items-baseline justify-between gap-4 py-2.5"
+										className="flex items-center justify-between gap-3 py-2.5"
 									>
 										<div className="min-w-0 flex-1">
 											<p className="text-sm leading-snug font-medium">
@@ -43,6 +49,10 @@ export function PricingSection() {
 												· {formatServiceDuration(item.durationMinutes)}
 											</span>
 										</p>
+										<ServiceBookDialog
+											serviceName={item.name}
+											journey={buildServiceBookingJourney(item)}
+										/>
 									</li>
 								))}
 							</ul>

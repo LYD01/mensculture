@@ -12,6 +12,7 @@ export { MapIcon } from "./MapIcon";
 export { PricingSection } from "./PricingSection";
 export { PromoBanner } from "./PromoBanner";
 export { PromoBannerStrip } from "./PromoBannerStrip";
+export { ServiceBookDialog } from "./ServiceBookDialog";
 export { ServicesSection } from "./ServicesSection";
 export { SiteFooter } from "./SiteFooter";
 export { SiteHeader } from "./SiteHeader";
