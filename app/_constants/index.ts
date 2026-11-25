@@ -31,6 +31,7 @@ export {
 	PROMOTION_LIMITS,
 	PROMOTION_TIME_ZONE,
 } from "./promotion";
+export { REVIEWS, type Review } from "./reviews";
 export {
 	OPEN_GRAPH_IMAGE,
 	SITE_DESCRIPTION,
@@ -38,11 +39,14 @@ export {
 	homePageMetadata,
 } from "./seo";
 export {
+	BOOKING_BASE_URL,
 	BOOKING_URL,
 	IS_PRODUCTION_DEPLOYMENT,
 	LOCATIONS,
 	type Location,
+	type LocationSlug,
 	SITE_LOGO,
 	SITE_URL,
 	SOCIAL_LINKS,
 } from "./site";
+export { TIMELY_SERVICES, type TimelyService } from "./timelyServices";

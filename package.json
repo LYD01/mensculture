@@ -9,6 +9,7 @@
 		"lint": "eslint .",
 		"format": "biome check --write .",
 		"format:check": "biome check .",
+		"timely:sync": "node scripts/syncTimelyServices.mjs && biome check --write app/_constants/timelyServices.ts",
 		"db:push": "drizzle-kit push",
 		"db:studio": "drizzle-kit studio",
 		"prepare": "husky"

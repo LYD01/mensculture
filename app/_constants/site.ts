@@ -24,14 +24,20 @@ export const SITE_LOGO = "/mensculture-logo.png";
 export const BOOKING_URL =
 	"https://bookings.gettimely.com/mensculture/book?uri=https%3A%2F%2Fbook.gettimely.com%2FBooking%2FLocation%2F301694%3Fmobile%3DTrue%26params%3D%25253fclient-login%25253dtrue";
 
-const BOOKING_BASE_URL = "https://bookings.gettimely.com/mensculture/book";
+export const BOOKING_BASE_URL =
+	"https://bookings.gettimely.com/mensculture/book";
 
 /** Opens Timely with this shop already selected, skipping the location picker. */
 function buildLocationBookingUrl(timelyLocationId: string): string {
 	return `${BOOKING_BASE_URL}?location=${timelyLocationId}`;
 }
 
+export type LocationSlug = "day-street" | "martin-place" | "circular-quay";
+
 export type Location = {
+	slug: LocationSlug;
+	/** Timely's id for this shop (the `location` booking link parameter). */
+	timelyLocationId: string;
 	name: string;
 	area: string;
 	streetAddress: string;
@@ -49,6 +55,8 @@ export type Location = {
 
 export const LOCATIONS: Location[] = [
 	{
+		slug: "day-street",
+		timelyLocationId: "390542",
 		name: "Day Street",
 		area: "Sydney CBD",
 		streetAddress: "158 Day St",
@@ -64,6 +72,8 @@ export const LOCATIONS: Location[] = [
 		bookingUrl: buildLocationBookingUrl("390542"),
 	},
 	{
+		slug: "martin-place",
+		timelyLocationId: "390543",
 		name: "Martin Place",
 		area: "Financial district",
 		streetAddress: "Shop 607, 19 Martin Place",
@@ -79,6 +89,8 @@ export const LOCATIONS: Location[] = [
 		bookingUrl: buildLocationBookingUrl("390543"),
 	},
 	{
+		slug: "circular-quay",
+		timelyLocationId: "389687",
 		name: "Circular Quay",
 		area: "Harbourside",
 		streetAddress: "Retail CB3, 180 George St",
