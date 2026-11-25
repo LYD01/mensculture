@@ -127,13 +127,26 @@ body {
 	touch-action: pan-y;
 	-webkit-user-select: none;
 	user-select: none;
+	/* Thin fixed fade on small screens so cards keep the width. */
 	mask-image: linear-gradient(
 		to right,
 		transparent,
-		black 4%,
-		black 96%,
+		black 8px,
+		black calc(100% - 8px),
 		transparent
 	);
+}
+
+@media (min-width: 40rem) {
+	.reviews-viewport {
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 4%,
+			black 96%,
+			transparent
+		);
+	}
 }
 
 .reviews-viewport[data-dragging="true"] {

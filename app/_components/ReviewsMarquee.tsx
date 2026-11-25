@@ -206,7 +206,7 @@ export function ReviewsMarquee({ children }: { children: ReactNode }) {
 			aria-label="Customer reviews"
 			// biome-ignore lint/a11y/noNoninteractiveTabindex: keyboard focus pauses the scrolling, and the arrow keys move it.
 			tabIndex={0}
-			className="reviews-viewport relative mt-12 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-navy motion-reduce:overflow-x-auto"
+			className="reviews-viewport relative -mx-6 mt-12 overflow-hidden sm:mx-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-navy motion-reduce:overflow-x-auto"
 		>
 			<div ref={trackRef} className="flex w-max will-change-transform">
 				{children}
